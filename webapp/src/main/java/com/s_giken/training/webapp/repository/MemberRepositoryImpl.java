@@ -23,7 +23,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     /**
      * 加入者情報をすべて取得する。
-     * 
+     *
      * @return Memberオブジェクトのリスト
      */
     @Override
@@ -35,7 +35,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     /**
      * メールアドレスの一部にマッチするの加入者情報リストを取得する。
-     * 
+     *
      * @return Optional型の Memberオブジェクト
      */
     @Override
@@ -43,18 +43,20 @@ public class MemberRepositoryImpl implements MemberRepository {
         String sql = "SELECT * FROM T_MEMBER WHERE member_id = ?";
         Object[] args = { id };
         int[] argTypes = { Types.BIGINT };
-        Member member = null;
+
+        Member member;
         try {
             member = jdbcTemplate.queryForObject(sql, args, argTypes, rowMapper);
         } catch (EmptyResultDataAccessException e) {
             member = null;
         }
+
         return Optional.ofNullable(member);
     }
 
     /**
      * メールアドレスの一部にマッチするの加入者情報リストを取得する。
-     * 
+     *
      * @return Optional型の Memberオブジェクト
      */
     @Override
@@ -68,7 +70,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     /**
      * 加入者情報をデータベースへ登録する。
-     * 
+     *
      * @param member 追加するMemberオブジェクト。 memberIdプロパティの値は null としなくてはならない
      * @return 処理した件数
      */
@@ -81,8 +83,27 @@ public class MemberRepositoryImpl implements MemberRepository {
         }
 
         String sql = """
-                        INSERT INTO T_MEMBER (member_id, mail, name, address, start_date, end_date, payment_method, created_at, modified_at)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+                    INSERT INTO T_MEMBER (
+                        member_id,
+                        mail,
+                        name,
+                        address,
+                        start_date,
+                        end_date,
+                        payment_method,
+                        created_at,
+                        modified_at)
+                    VALUES (
+                        ?,
+                        ?,
+                        ?,
+                        ?,
+                        ?,
+                        ?,
+                        ?,
+                        CURRENT_TIMESTAMP,
+                        CURRENT_TIMESTAMP
+                    )
                 """;
         int processed_count = jdbcTemplate.update(
                 sql,
@@ -99,7 +120,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     /**
      * データベースの加入者情報を更新する。
-     * 
+     *
      * @param member 更新するMemberオブジェクト。 memberIdプロパティには値が設定されている必要がある。
      * @return 処理した件数
      */
@@ -132,7 +153,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     /**
      * データベースから指定した加入者IDの加入者情報を削除する。
-     * 
+     *
      * @param id 加入者ID
      * @return 処理した件数
      */

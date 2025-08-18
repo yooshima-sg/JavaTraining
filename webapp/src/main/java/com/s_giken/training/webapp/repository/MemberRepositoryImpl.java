@@ -4,6 +4,7 @@ import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -42,7 +43,12 @@ public class MemberRepositoryImpl implements MemberRepository {
         String sql = "SELECT * FROM T_MEMBER WHERE member_id = ?";
         Object[] args = { id };
         int[] argTypes = { Types.BIGINT };
-        Member member = jdbcTemplate.queryForObject(sql, args, argTypes, rowMapper);
+        Member member = null;
+        try {
+            member = jdbcTemplate.queryForObject(sql, args, argTypes, rowMapper);
+        } catch (EmptyResultDataAccessException e) {
+            member = null;
+        }
         return Optional.ofNullable(member);
     }
 

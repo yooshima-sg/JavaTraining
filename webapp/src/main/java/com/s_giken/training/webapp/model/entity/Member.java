@@ -10,7 +10,7 @@ import com.s_giken.training.webapp.model.PaymentMethod;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,9 +23,11 @@ public class Member {
     private Long memberId;
 
     @NotBlank
+    @Size(min = 1, max = 255)
     private String mail;
 
     @NotBlank
+    @Size(min = 1, max = 31)
     private String name;
 
     @NotBlank

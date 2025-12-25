@@ -1,6 +1,6 @@
 {
 	"name": "JavaTraining",
-	"image": "mcr.microsoft.com/devcontainers/java:1-25-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/java:25",
 	"features": {
 		"ghcr.io/devcontainers/features/java:latest": {
 			"version": "none",

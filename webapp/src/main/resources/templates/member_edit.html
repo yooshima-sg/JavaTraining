@@ -79,7 +79,7 @@
       // 取得した要素がクリックされた時に実行される関数を登録。
       deleteBtn.addEventListener("click", (e) => {
         // 確認画面を表示
-        let result = confirm("id:[[${member.memberId}]]を削除してもよろしいですか？");
+        const result = confirm("id:[[${member.memberId}]]を削除してもよろしいですか？");
         if (!result) {
           // もし、キャンセルが押されたら、クリックされた要素動作を取りやめる
           e.preventDefault();

@@ -179,15 +179,15 @@ This project is provided as a practical exercise to modify an existing system. T
 
   - **Framework**: Spring Boot
   - **Web**: Spring MVC
-  - **Data Access**: Spring Data JPA
+  - **Data Access**: Spring JDBC (JdbcTemplate)
   - **View**: Thymeleaf
   - **Other**: Lombok (for reducing boilerplate code)
 
 - **Architecture**:
   - **Controller (`...Controller.java`)**: Annotated with `@Controller`, it handles HTTP requests and screen transitions.
   - **Service (`...Service.java`, `...ServiceImpl.java`)**: Annotated with `@Service`, it handles business logic. It is separated into an interface and an implementation class.
-  - **Repository (`...Repository.java`)**: An interface that extends Spring Data JPA's `JpaRepository` and handles data access.
-  - **Entity (`.../model/entity/*.java`)**: A JPA entity class annotated with `@Entity`, which is mapped to a database table.
+  - **Repository (`...Repository.java`, `...RepositoryImpl.java`)**: The interface defines data access methods. The implementation class (`...RepositoryImpl.java`) is annotated with `@Repository` and uses `JdbcTemplate` to execute SQL statements.
+  - **Entity / Model (`.../model/entity/*.java`)**: A model class that maps to a database table. It is used in conjunction with `RowMapper` to map query results to objects.
 
 ### 2. `batch` Module (Batch Application)
 
@@ -196,8 +196,8 @@ This project is provided as a practical exercise to modify an existing system. T
 - **Main Technology Stack**:
 
   - **Framework**: Spring Boot
-  - **Data Access**: The use of `JdbcTemplate` is assumed.
+  - **Data Access**: Spring JDBC (`JdbcTemplate`)
 
 - **Architecture**:
   - The entry point is the main class (`BatchApplication.java`) that implements the `@SpringBootApplication` and `CommandLineRunner` interfaces.
-  * It is assumed that a series of batch processes, such as data retrieval from the database, processing, and re-registration, will be implemented in the `run` method.
+  - It is assumed that a series of batch processes, such as data retrieval from the database, processing, and re-registration, will be implemented in the `run` method.

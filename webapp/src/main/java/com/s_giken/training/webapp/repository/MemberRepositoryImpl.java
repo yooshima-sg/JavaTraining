@@ -15,7 +15,6 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<Member> rowMapper;
-
     public MemberRepositoryImpl(JdbcTemplate jdbcTemplate, RowMapper<Member> rowMapper) {
         this.jdbcTemplate = jdbcTemplate;
         this.rowMapper = rowMapper;

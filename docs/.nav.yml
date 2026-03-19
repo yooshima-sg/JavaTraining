@@ -1,4 +1,5 @@
 nav:
+  - 課題: assignment.md
   - 要件定義: 00_rfp.md
   - 基本設計書: 01_basic_spec.md
   - 詳細設計書: 02_detail_spec.md

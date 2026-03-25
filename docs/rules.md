@@ -99,7 +99,7 @@ public Optional<Subscriber> findById(Long subscriberId) {
 
 ### プログラミングの実践
 
-#### `@Override` を常に付与する
+#### 継承したクラスでインターフェースのメソッドをオーバーライドするとき `@Override` を常に付与する
 
 ```java
 // OK

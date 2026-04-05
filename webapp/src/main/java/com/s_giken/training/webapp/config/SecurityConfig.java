@@ -41,9 +41,6 @@ public class SecurityConfig {
                         .requestMatchers(
                                 PathPatternRequestMatcher
                                         .withDefaults()
-                                        .matcher("/h2-console/**"),
-                                PathPatternRequestMatcher
-                                        .withDefaults()
                                         .matcher("/.well-known/**"),
                                 PathPatternRequestMatcher
                                         .withDefaults()

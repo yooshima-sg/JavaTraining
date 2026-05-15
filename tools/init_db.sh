@@ -30,5 +30,7 @@ DELETE FROM T_USER;
 
 INSERT INTO T_USER VALUES ('user', '$argon2id$v=19$m=14,t=2,p=1$eVczdXhrMWlDZERWUnZWdA$HjSDtkidFBp49L0k8ZlvtTVcKkC//uOkIjDRiYbGIWg', true);
 
+INSERT INTO T_MEMBER VALUES (nextval('t_member_seq'), 'yamada@example.com', '山田　太郎', '東京都千代田区1-1-1', '2026-01-01', NULL, 1, NOW(), NOW());
+
 COMMIT;
 __EOS__

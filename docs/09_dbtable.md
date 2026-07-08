@@ -115,6 +115,6 @@
 | No. | 論理列名       | 物理列名    | データ型  | 制約 | デフォルト値      | 備考                      |
 | --- | -------------- | ----------- | --------- | ---- | ----------------- | ------------------------- |
 | 1   | 請求年月       | billing_ym  | DATE      | P    |                   | 日は01固定<br>例: 2023-08-01 |
-| 2   | 確定           | is_commit   | BOOLEAN   |      | 0                 |                           |
+| 2   | 確定           | is_commit   | BOOLEAN   |      | FALSE             |                           |
 | 3   | レコード作成日 | created_at  | TIMESTAMP |      | CURRENT_TIMESTAMP |                           |
 | 4   | レコード更新日 | modified_at | TIMESTAMP |      | CURRENT_TIMESTAMP |                           |

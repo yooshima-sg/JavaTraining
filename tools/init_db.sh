@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS t_user (
 
 CREATE TABLE IF NOT EXISTS t_member (
     member_id	    BIGINT NOT NULL,
-    mail	        VARCHAR(255) NOT NULL,
+    mail	        VARCHAR(255) NOT NULL UNIQUE,
     name	        VARCHAR(31) NOT NULL,
     address	        VARCHAR(127) NOT NULL,
     start_date	    DATE NOT NULL,

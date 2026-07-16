@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.s_giken.training.webapp.model.PaymentMethod;
+import com.s_giken.training.webapp.validation.annotation.DateRangeValid;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DateRangeValid(startDateField = "startDate", endDateField = "endDate")
 public class Member {
     @Nullable
     private Long memberId;

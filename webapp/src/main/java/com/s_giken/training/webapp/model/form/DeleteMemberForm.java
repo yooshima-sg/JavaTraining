@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeleteUserForm {
+public class DeleteMemberForm {
     @NotNull
     private Long memberId;
 }

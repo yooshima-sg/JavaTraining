@@ -14,10 +14,8 @@ import com.s_giken.training.webapp.exception.NotFoundException;
 import com.s_giken.training.webapp.model.PaymentMethod;
 import com.s_giken.training.webapp.model.entity.Member;
 import com.s_giken.training.webapp.model.entity.MemberSearchCondition;
-import com.s_giken.training.webapp.model.form.DeleteUserForm;
+import com.s_giken.training.webapp.model.form.DeleteMemberForm;
 import com.s_giken.training.webapp.service.IMemberService;
-
-import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -169,15 +167,15 @@ public class MemberController {
      * @return リダイレクト先のURL
      */
     @PostMapping("/delete")
-    public String deleteMember(@Validated DeleteUserForm deleteUser,
+    public String deleteMember(@Validated DeleteMemberForm deleteMemberForm,
             BindingResult result,
             RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             throw new NotFoundException(String.format("memberIdが不正です。"));
         }
 
-        Long memberId = deleteUser.getMemberId();
-        Optional<Member> member = memberService.findById(memberId);
+        var memberId = deleteMemberForm.getMemberId();
+        var member = memberService.findById(memberId);
         if (!member.isPresent()) {
             throw new NotFoundException(String.format("指定したmemberId(%d)の加入者情報が存在しません。", memberId));
         }

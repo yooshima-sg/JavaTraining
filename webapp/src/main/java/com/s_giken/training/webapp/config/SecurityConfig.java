@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configurers.LogoutConf
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 /**
  * Spring Securityの設定クラス
@@ -30,27 +29,16 @@ public class SecurityConfig {
     SecurityFilterChain webSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(Customizer.withDefaults())
-                .headers((header) -> header
-                        .frameOptions((frame) -> frame.sameOrigin()))
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll())
+                .headers((header) -> header.frameOptions((frame) -> frame.sameOrigin()))
+                .formLogin((form) -> form.loginPage("/login").permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .authorizeHttpRequests((authorize) -> authorize
                         // 特例として認証を無視するURL
-                        .requestMatchers(
-                                PathPatternRequestMatcher
-                                        .withDefaults()
-                                        .matcher("/.well-known/**"),
-                                PathPatternRequestMatcher
-                                        .withDefaults()
-                                        .matcher("/image/**"),
-                                PathPatternRequestMatcher
-                                        .withDefaults()
-                                        .matcher("/css/**"))
+                        .requestMatchers("/.well-known/**", "/image/**", "/css/**")
                         .permitAll()
                         // 特例以外のURLは要認証
-                        .anyRequest().authenticated());
+                        .anyRequest()
+                        .authenticated());
 
         return http.build();
     }

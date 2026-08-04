@@ -43,11 +43,5 @@ tasks.withType<Test> {
     failOnNoDiscoveredTests = false
 }
 
-tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
-    // ワーキングディレクトリをプロジェクトルートにする。
-    // 指定がない場合は、プロジェクトルート/webapp
-    workingDir = rootProject.projectDir
-}
-
 group = "com.s_giken.training.webapp"
 description = "webapp"

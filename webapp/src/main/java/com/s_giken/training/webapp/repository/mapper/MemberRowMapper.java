@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import com.s_giken.training.webapp.model.PaymentMethod;
@@ -27,7 +26,7 @@ public class MemberRowMapper implements RowMapper<Member> {
      * @return Memberオブジェクト
      */
     @Override
-    public Member mapRow(@NonNull ResultSet rs, int rowNum) throws SQLException {
+    public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
         Member member = new Member();
 
         member.setMemberId(rs.getLong("member_id"));

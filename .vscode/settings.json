@@ -27,6 +27,6 @@
     "java.dependency.packagePresentation": "hierarchical",
     "gradle.nestedProjects": true,
     "gradle.autoDetect": "off",
-    "java.import.gradle.enabled": false,
-    "java.import.gradle.wrapper.enabled": false
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.wrapper.enabled": true
 }

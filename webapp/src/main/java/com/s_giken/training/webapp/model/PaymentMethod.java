@@ -26,7 +26,7 @@ public enum PaymentMethod {
     /**
      * コンストラクタ
      *
-     * 列挙型の今合うトラクタは、アクセサを何も指定しないかprivateとする。
+     * 列挙型のコンストラクタは、アクセサを何も指定しないかprivateとする。
      *
      * @param code
      * @param displayName

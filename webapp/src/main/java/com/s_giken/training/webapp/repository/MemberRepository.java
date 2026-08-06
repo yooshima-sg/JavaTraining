@@ -34,8 +34,9 @@ public class MemberRepository implements IMemberRepository {
     }
 
     /**
-     * メールアドレスの一部にマッチするの加入者情報リストを取得する。
+     * 指定した加入者IDの加入者情報を取得する。
      *
+     * @param id 取得する加入者ID
      * @return Optional型の Memberオブジェクト
      */
     @Override
@@ -55,10 +56,10 @@ public class MemberRepository implements IMemberRepository {
     }
 
     /**
-     * メールアドレスの一部にマッチするの加入者情報リストを取得する。
+     * メールアドレスの一部にマッチする加入者情報リストを取得する。
      *
      * @param mail 検索したいメールアドレスの一部
-     * @return Optional型の Memberオブジェクト
+     * @return 条件に一致したMemberオブジェクトのリスト
      */
     @Override
     public List<Member> findByMailLike(String mail) {
@@ -110,7 +111,7 @@ public class MemberRepository implements IMemberRepository {
                         CURRENT_TIMESTAMP
                     )
                 """;
-        int processed_count = jdbcTemplate.update(
+        int processedCount = jdbcTemplate.update(
                 sql,
                 memberId,
                 member.getMail(),
@@ -120,7 +121,7 @@ public class MemberRepository implements IMemberRepository {
                 member.getEndDate(),
                 member.getPaymentMethod().getCode());
 
-        return processed_count;
+        return processedCount;
     }
 
     /**
@@ -142,7 +143,7 @@ public class MemberRepository implements IMemberRepository {
                         modified_at = CURRENT_TIMESTAMP
                     WHERE member_id = ?
                 """;
-        int processed_count = jdbcTemplate.update(
+        int processedCount = jdbcTemplate.update(
                 sql,
                 member.getMail(),
                 member.getName(),
@@ -152,7 +153,7 @@ public class MemberRepository implements IMemberRepository {
                 member.getPaymentMethod().getCode(),
                 member.getMemberId());
 
-        return processed_count;
+        return processedCount;
     }
 
     /**
@@ -165,8 +166,8 @@ public class MemberRepository implements IMemberRepository {
     public int deleteById(Long id) {
         String sql = "DELETE FROM T_MEMBER WHERE member_id = ?";
 
-        int processed_count = jdbcTemplate.update(sql, id);
+        int processedCount = jdbcTemplate.update(sql, id);
 
-        return processed_count;
+        return processedCount;
     }
 }

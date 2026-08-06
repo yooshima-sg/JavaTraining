@@ -11,8 +11,8 @@ import com.s_giken.training.webapp.model.PaymentMethod;
 import com.s_giken.training.webapp.model.entity.Member;
 
 /**
- * データベースからのT_USERデータをMemberオブジェクトにマッピングする
- * 
+ * データベースからのT_MEMBERデータをMemberオブジェクトにマッピングする
+ *
  * @Autowired で注入できるように、DIコンテナのコンポーネントとする。
  */
 @Component

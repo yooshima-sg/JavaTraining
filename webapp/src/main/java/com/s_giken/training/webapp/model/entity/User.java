@@ -8,6 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * ユーザ情報エンティティ
+ *
+ * T_USERテーブルの1レコードに対応し、認証に使用する。
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

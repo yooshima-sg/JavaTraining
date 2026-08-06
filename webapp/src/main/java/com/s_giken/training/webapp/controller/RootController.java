@@ -10,23 +10,23 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/")
 public class RootController {
-	/**
-	 * ルートパスにアクセスされた場合の処理
-	 * 
-	 * @return トップ画面のテンプレート名
-	 */
-	@GetMapping("/")
-	public String hello() {
-		return "top";
-	}
+    /**
+     * ルートパスにアクセスされた場合の処理
+     *
+     * @return トップ画面のテンプレート名
+     */
+    @GetMapping("/")
+    public String hello() {
+        return "top";
+    }
 
-	/**
-	 * ログイン画面を表示する
-	 * 
-	 * @return ログイン画面のテンプレート名
-	 */
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+    /**
+     * ログイン画面を表示する
+     *
+     * @return ログイン画面のテンプレート名
+     */
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

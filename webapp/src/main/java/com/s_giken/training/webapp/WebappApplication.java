@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class WebappApplication {
-	/**
-	 * Spring Bootの起動メソッド
-	 * 
-	 * @param args コマンドライン引数
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(WebappApplication.class, args);
-	}
+    /**
+     * Spring Bootの起動メソッド
+     *
+     * @param args コマンドライン引数
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(WebappApplication.class, args);
+    }
 }

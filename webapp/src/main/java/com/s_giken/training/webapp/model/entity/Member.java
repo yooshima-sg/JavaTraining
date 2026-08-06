@@ -33,6 +33,7 @@ public class Member {
     private String name;
 
     @NotBlank
+    @Size(min = 1, max = 127)
     private String address;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

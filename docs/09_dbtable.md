@@ -1,7 +1,7 @@
 # テーブル定義書
 
 - **データベースシステム:** PostgreSQL
-- **接続先:** db
+- **接続情報:** リポジトリルートの README.md「データベースへのアクセス」を参照
 
 ## テーブル一覧
 
@@ -44,15 +44,19 @@
 
 | No. | 論理列名       | 物理列名       | データ型     | 制約 | デフォルト値      | 備考                          |
 | --- | -------------- | -------------- | ------------ | ---- | ----------------- | ----------------------------- |
-| 1   | 加入者ID       | member_id      | BIGINT       | P    | AUTO              |                               |
+| 1   | 加入者ID       | member_id      | BIGINT       | P    |                   | シーケンス`t_member_seq`で採番 |
 | 2   | メールアドレス | mail           | VARCHAR(255) | U    |                   |                               |
 | 3   | 氏名           | name           | VARCHAR(31)  |      |                   |                               |
 | 4   | 住所           | address        | VARCHAR(127) |      |                   |                               |
 | 5   | 加入日         | start_date     | DATE         |      |                   |                               |
 | 6   | 解約日         | end_date       | DATE         | N    |                   |                               |
-| 7   | 決済方法       | payment_method | INT          |      |                   | 1: クレジット決済<br>2: 銀行振込 |
+| 7   | 決済方法       | payment_method | INT          |      |                   | 1: クレジット<br>2: 銀行振込 |
 | 8   | レコード作成日 | created_at     | TIMESTAMP    |      | CURRENT_TIMESTAMP |                               |
 | 9   | レコード更新日 | modified_at    | TIMESTAMP    |      | CURRENT_TIMESTAMP |                               |
+
+**補足**
+
+- `member_id`は自動採番列(SERIAL/IDENTITY)ではない。登録時にシーケンス`t_member_seq`から`nextval`で採番した値を明示的に設定する。
 
 ## 料金情報◆T_CHARGE
 
@@ -64,13 +68,17 @@
 
 | No. | 論理列名       | 物理列名    | データ型      | 制約 | デフォルト値      | 備考 |
 | --- | -------------- | ----------- | ------------- | ---- | ----------------- | ---- |
-| 1   | 料金ID         | charge_id   | BIGINT        | P    | AUTO              |      |
+| 1   | 料金ID         | charge_id   | BIGINT        | P    |                   | シーケンス`t_charge_seq`で採番 |
 | 2   | 料金名         | name        | VARCHAR(127)  |      |                   |      |
 | 3   | 月額料金       | amount      | NUMERIC(9,0)  |      |                   |      |
 | 4   | 適用開始日     | start_date  | DATE          |      |                   |      |
 | 5   | 適用終了日     | end_date    | DATE          | N    |                   |      |
 | 6   | レコード作成日 | created_at  | TIMESTAMP     |      | CURRENT_TIMESTAMP |      |
 | 7   | レコード更新日 | modified_at | TIMESTAMP     |      | CURRENT_TIMESTAMP |      |
+
+**補足**
+
+- `charge_id`は自動採番列(SERIAL/IDENTITY)ではない。登録時にシーケンス`t_charge_seq`から`nextval`で採番した値を明示的に設定する。
 
 ## 請求データ◆T_BILLING_DATA
 
